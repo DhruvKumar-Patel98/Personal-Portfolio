@@ -9,9 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'caleb-primary': '#333', // Dark background color
+        'caleb-accent': '#ffab00', // Accent color
       },
+      fontFamily: {
+        sans: ['Inter', 'Arial', 'sans-serif'],
+      },
+      spacing: {
+        'screen': '100vh',
+      }
     },
   },
   plugins: [],
