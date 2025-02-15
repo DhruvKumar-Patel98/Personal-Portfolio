@@ -7,7 +7,10 @@ body {
     /* overflow: hidden; */
   }
 
-
+  html {
+    scroll-behavior: smooth;
+  }
+  
   @keyframes firefly {
     0% {
       transform: translate(0, 0);
@@ -172,4 +175,18 @@ body {
   
   .animate-logo-appear {
     animation: logo-appear 1.2s ease-in-out forwards;
+  }
+
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+  }
+
+  footer a:hover {
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
   }

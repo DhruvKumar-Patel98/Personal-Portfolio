@@ -13,6 +13,7 @@ export default {
         'caleb-accent': '#ffab00', // Accent color
       },
       fontFamily: {
+        baskerville: ['Baskerville', 'serif'],
         sans: ['Inter', 'Arial', 'sans-serif'],
       },
       spacing: {
