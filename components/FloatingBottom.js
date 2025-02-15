@@ -1,4 +1,5 @@
 import { FaLinkedin, FaGithub, FaHome, FaEnvelope } from "react-icons/fa"; // Importing icons from react-icons
+import Link from "next/link"; // Importing Link from next/link
 
 export default function FloatingIcons() {
   return (
@@ -21,12 +22,12 @@ export default function FloatingIcons() {
         >
           <FaGithub />
         </a>
-        <a
-          href="/"
-          className="text-white text-3xl sm:text-2xl md:text-3xl hover:text-red-500 transition duration-300"
-        >
-          <FaHome />
-        </a>
+        {/* Use Link for internal navigation */}
+        <Link href="/" legacyBehavior>
+          <a className="text-white text-3xl sm:text-2xl md:text-3xl hover:text-red-500 transition duration-300">
+            <FaHome />
+          </a>
+        </Link>
         <a
           href="mailto:dhruvkumarpatel9726@gmail.com"
           className="text-white text-3xl sm:text-2xl md:text-3xl hover:text-green-500 transition duration-300"

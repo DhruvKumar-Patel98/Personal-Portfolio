@@ -32,7 +32,7 @@ export default function Contact() {
           <span className="text-3xl">📧</span> 
           <span>Contact</span>
         </h2>
-        <p className="text-gray-400 mt-2">Let's connect! Reach out via email.</p>
+        <p className="text-gray-400 mt-2">Let&#39;s connect! Reach out via email.</p>
 
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
