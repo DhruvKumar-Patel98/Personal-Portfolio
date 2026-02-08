@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { LuBriefcaseBusiness } from "react-icons/lu";
 import {ExperienceCard} from "../components/ExperienceCard"; 
 
