@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { LuBriefcaseBusiness } from "react-icons/lu";
-
+import {ExperienceCard} from "../components/ExperienceCard"; 
 
 export default function Experience() {
   return (
@@ -14,145 +14,76 @@ export default function Experience() {
           <span>Experience</span>
         </h2>
         <p className="text-gray-400 text-center mt-2">
-          Software engineer with over 2 years of experience.
+          Software engineer with over 3 years of experience.
         </p>
 
         {/* Experience Cards */}
         <div className="mt-8 space-y-6">
-          {/* Card 1: Research Assistance */}
-          <motion.div
-            className="flex flex-col md:flex-row items-start space-x-0 md:space-x-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Vertical Line (Hidden on Mobile) */}
-            <div className="w-1 h-24 bg-gray-500 hidden md:block"></div>
+          <ExperienceCard
+          logo="/semo-logo.png"
+          title="Graduate Assistant"
+          company="Southeast Missouri State University"
+          location="Cape Girardeau, Missouri"
+          duration="Aug 2025 - Present"
+          points={[
+            "Delivered lectures and labs on Java, Spring Boot, JPA, and RESTful service design and AWS Cloud.",
+            "Support classroom operations by preparing instructional materials, grading assignments, and coordinating student communications"
+          ]}
+        />
+          {/* Card 2: Research Assistance */}
+          <ExperienceCard
+            logo="/semo-logo.png"
+            title="Research Assistant"
+            company="Southeast Missouri State University"
+            location="Cape Girardeau, Missouri"
+            duration="Jan 2025 - May 2025"
+            points={[
+              "Developing deep learning and neural network models for facial emotion recognition",
+              "Building an AI model using 4000+ images across 7+ emotion categories",
+              "Assisting in research projects solving real-world problems using AI",
+            ]}
+          />
 
-            {/* Logo */}
-            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto md:mx-0">
-              <Image
-                src="/semo-logo.png"
-                alt="Semo Logo"
-                width={96}
-                height={96}
-                className="object-cover w-full h-full"
-              />
-            </div>
+          {/* Card 3: Bajaj Finserv */}
+          <ExperienceCard
+            logo="/bajaj-logo.png"
+            title="Software Engineer"
+            company="Bajaj Finserv"
+            location="Pune, Maharashtra"
+            duration="Jan 2023 - Jul 2024"
+            points={[
+              "Designing backend services using Java and Spring Boot",
+              "Building secure REST APIs with Spring Security",
+              "Optimizing PostgreSQL and MySQL queries",
+              "Kafka event driven architecture (5000+ msg/sec)",
+              "Azure cloud CI/CD deployment",
+              "Angular frontend integration",
+              "JUnit / Mockito testing",
+              "Reduced CI/CD runtime from 60 → 40 min",
+              "Agile collaboration with QA + DevOps",
+              "Cross team collaboration and problem solving"
+            ]}
+          />
+        {/* Card 4: BinaryDots Technologies Pvt. Ltd */}
+         <ExperienceCard
+            logo="/binarydots.png"
+            title="Java Developer"
+            company="BinaryDots Technologies Pvt. Ltd"
+            location="Jhansi, Uttar Pradesh"
+            duration="Jan 2022 - Jun 2022"
+            points={[
+              "Designed and developed scalable Android components using Java with Clean Architecture",
+              "Integrated REST APIs using Retrofit, OkHttp with pagination, caching and error handling",
+              "Wrote unit and UI tests using JUnit, Mockito and Espresso",
+              "Deployed apps on AWS (EKS, EC2, RDS, S3) with Terraform and Kubernetes",
+              "Built scalable microservices using Java, Spring Boot and JDBC",
+              "Improved API performance using Redis caching (40% latency reduction)",
+              "Worked on CI/CD pipelines using Jenkins and GitLab",
+              "Collaborated with product managers, designers and backend engineers",
+              "Solved complex technical challenges improving application stability"
+            ]}
+          />
 
-            {/* Experience Card */}
-            <div className="p-6 bg-gray-800 rounded-lg shadow-md w-full">
-              <div className="flex flex-col md:flex-row justify-between items-start">
-                <div>
-                  <h3 className="font-Epilogue text-2xl font-semibold">Research Assistance</h3>
-                  <p className="text-gray-400 font-baskerville pl-1">Southeast Missouri State University</p>
-                  <div className="font-baskerville flex items-center text-gray-400 mt-1 pl-2 hidden md:flex">
-                    <FaMapMarkerAlt className="mr-2" />
-                    <span>Cape Girardeau, Missouri</span>
-                  </div>
-                </div>
-                
-                {/* Duration (Visible on Mobile and Desktop) */}
-                <div className="flex items-center text-gray-400 bg-gray-700 px-3 py-1 rounded-lg shadow mt-4 md:mt-0">
-                  <FaCalendarAlt className="mr-2" />
-                  <span>Jan 2025 - Present</span>
-                </div>
-              </div>
-
-              <p className="mt-2 text-gray-300 pl-1">
-                Deep learning and neural networks development, building an emotion recognition model using a dataset of 4000+ images across 7+ categories.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Card 2: Bajaj Finserv */}
-          <motion.div
-            className="flex flex-col md:flex-row items-start space-x-0 md:space-x-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="w-1 h-24 bg-gray-500 hidden md:block"></div>
-
-            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto md:mx-0">
-              <Image
-                src="/bajaj-logo.png"
-                alt="Bajaj Finserv Logo"
-                width={96}
-                height={96}
-                className="object-cover w-full h-full"
-              />
-            </div>
-
-            <div className="p-6 bg-gray-800 rounded-lg shadow-md w-full">
-              <div className="flex flex-col md:flex-row justify-between items-start">
-                <div>
-                  <h3 className="font-Epilogue text-2xl font-semibold">Software Engineer</h3>
-                  <p className="font-baskerville text-gray-400 pl-1">Bajaj Finserv</p>
-                  <div className="font-baskerville flex items-center text-gray-400 mt-1 pl-2 hidden md:flex">
-                    <FaMapMarkerAlt className="mr-2" />
-                    <span>Pune, Maharashtra</span>
-                  </div>
-                </div>
-
-                {/* Duration (Visible on Mobile and Desktop) */}
-                <div className="flex items-center text-gray-400 bg-gray-700 px-3 py-1 rounded-lg shadow mt-4 md:mt-0">
-                  <FaCalendarAlt className="mr-2" />
-                  <span>Jan 2023 - Jul 2024</span>
-                </div>
-              </div>
-
-              <p className="mt-2 text-gray-300 pl-1">
-                Developed a Progressive Web App (PWA) for Android to meet business requirements and built a release distribution platform similar to AppCenter.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Card 3: Binary Dots */}
-          <motion.div
-            className="flex flex-col md:flex-row items-start space-x-0 md:space-x-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="w-1 h-24 bg-gray-500 hidden md:block"></div>
-
-            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto md:mx-0">
-              <Image
-                src="/binarydots.png"
-                alt="Binary Dots Logo"
-                width={96}
-                height={96}
-                className="object-cover w-full h-full"
-              />
-            </div>
-
-            <div className="p-6 bg-gray-800 rounded-lg shadow-md w-full">
-              <div className="flex flex-col md:flex-row justify-between items-start">
-                <div>
-                  <h3 className="font-Epilogue text-2xl font-semibold">Android Developer</h3>
-                  <p className="font-baskerville text-gray-400 pl-1">Binary-Dots Pvt Ltd</p>
-                  <div className="font-baskerville flex items-center text-gray-400 mt-1 pl-2 hidden md:flex">
-                    <FaMapMarkerAlt className="mr-2" />
-                    <span>Jhansi, Uttar Pradesh</span>
-                  </div>
-                </div>
-
-                {/* Duration (Visible on Mobile and Desktop) */}
-                <div className="flex items-center text-gray-400 bg-gray-700 px-3 py-1 rounded-lg shadow mt-4 md:mt-0">
-                  <FaCalendarAlt className="mr-2" />
-                  <span>Apr 2022 - Jun 2022</span>
-                </div>
-              </div>
-
-              <p className="mt-2 text-gray-300 pl-1">
-                Built and optimized Android SDKs, improved app performance.
-              </p>
-            </div>
-          </motion.div>
         </div>
 
       </div>
