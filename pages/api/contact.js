@@ -1,6 +1,4 @@
-import sendgrid from "@sendgrid/mail";
-
-sendgrid.setApiKey(process.env.KEY);
+import { google } from "googleapis";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -10,29 +8,37 @@ export default async function handler(req, res) {
   try {
     const { name, email, message } = req.body;
 
-    await sendgrid.send({
-        to: "dhruvkumarpatel9726@gmail.com", // Your email
-        from: "pateldhruv9726@gmail.com", // Must be a verified sender in SendGrid
-        reply_to: email, 
-        subject: `New Contact Form Submission from ${name}`,
-        text: `Hi Dhruvkumar,  
-      
-      I am ${name}. I am reaching out to you for the following reason:  
-      
-      "${message}"  
-      
-      Regards,  
-      ${name}`,
-        html: `<p>Hi Dhruvkumar,</p>
-               <p>I am <strong>${name}</strong>. I am reaching out to you for the following reason:</p>
-               <p>"${message}"</p>
-               <p>Regards,<br>${name}</p>`
-      });
-      
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, message: "All fields are required." });
+    }
 
-    return res.status(200).json({ success: true, message: "Email sent successfully!" });
+    // Parse service account JSON from env
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+    const auth = new google.auth.GoogleAuth({
+      credentials,
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+
+    const sheets = google.sheets({ version: "v4", auth });
+
+    const spreadsheetId = process.env.SPREADSHEET_ID;
+
+    // Append new row: Name | Email | Message | Timestamp
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Sheet1!A:D", // Make sure your sheet name is correct
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [
+          [name, email, message, new Date().toLocaleString()],
+        ],
+      },
+    });
+
+    return res.status(200).json({ success: true, message: "Message saved successfully!" });
   } catch (error) {
-    console.error("Error sending email:", error.response?.body || error);
-    return res.status(500).json({ success: false, message: "Email could not be sent." });
+    console.error("Error saving message:", error);
+    return res.status(500).json({ success: false, message: "Could not save message." });
   }
 }
